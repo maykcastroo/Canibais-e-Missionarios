@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Stack;
 import modelo.No;
 
 /**
@@ -13,16 +14,21 @@ public class Pilha {
 
     public void insere(No novo) {
         this.pilha.add(novo);
+//        System.out.println("Inseriu >>> ");
+//        imprimir();
     }
-
-    public No remove() {
-        return this.pilha.remove(this.pilha.size() - 1);
+    public void remove() {
+        this.pilha.remove(this.pilha.size()-1);
     }
 
     public boolean vazia() {
         return this.pilha.size() == 0;
     }
-
+    
+    public int tamanho(){
+        return this.pilha.size();
+    }
+    
     public void imprimir() {
         for (No i : pilha) {
             System.out.println(" " + i.getEstado().getMargemCanoa() + ", " + i.getEstado().getQuantMissionariosEsquerda() + ", "

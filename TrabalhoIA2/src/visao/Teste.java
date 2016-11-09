@@ -25,8 +25,7 @@ public class Teste {
 //		c.buscaEmLargura(noInicial);
 //		c.buscaGulosa(noInicial);
 //		c.buscaA(noInicial);
-		System.out.println("N�mero m�ximo de n�s na fronteira de estados: "+c.quantidadeNosFronteiraDeEstados(noInicial));
+		System.out.println("Nuumero maximo de nos na fronteira de estados: "+c.getNumeroMaximoNaFronteiraDeEstados());
 		
-		/* CONFIRMA��O COMMIT */
 	}
 }

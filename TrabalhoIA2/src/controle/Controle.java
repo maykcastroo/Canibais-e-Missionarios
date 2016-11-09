@@ -16,15 +16,23 @@ public class Controle implements modelo.FuncoesControle {
     private boolean semSolucao;
     private int capacidadeCanoa;
     private int quantNosVisitados;
-    Pilha pilha = new Pilha();
-
+    private Pilha pilha = new Pilha();
+    private int maxFronteira = 0;
+    
+    
     public Controle(int capacidadeCanoa) {
         this.capacidadeCanoa = capacidadeCanoa;
         this.quantNosVisitados = 0;
         this.solucaoEncontrada = false;
         this.semSolucao = false;
     }
-
+    public int getNumeroMaximoNaFronteiraDeEstados(){
+        return maxFronteira;
+    }
+    public void setNumeroMaximoNaFronteiraDeEstados(int tam){
+        this.maxFronteira = tam;
+    }
+    
     public int quantidadeNosFronteiraDeEstados(No raiz) {
         int quantFin = raiz.getFilhos().size();
         int quantIn;
@@ -327,13 +335,19 @@ public class Controle implements modelo.FuncoesControle {
             solucaoEncontrada = true;
         }
     }
-
+    
     @Override
     public void buscaEmProfundidade(No noInicial) {
         System.out.println("Fronteira de Estados: ");
         pilha.imprimir();
+        if(pilha.tamanho() > getNumeroMaximoNaFronteiraDeEstados()){
+            setNumeroMaximoNaFronteiraDeEstados(pilha.tamanho());
+        }
         if (!isSolucao(noInicial.getEstado())) {
-            pilha.insere(noInicial);
+            if (noInicial.isRaiz()) {
+                pilha.insere(noInicial);
+            }
+
             estadosTestados.add(noInicial.getEstado());
             No novoNo;
 
@@ -397,10 +411,10 @@ public class Controle implements modelo.FuncoesControle {
             if (!solucaoEncontrada) {
                 if (noInicial.getFilhos().size() > 0) {
                     pilha.remove();
-                    for (int i = noInicial.getFilhos().size(); i > 0 ; i--) {
+                    for (int i = noInicial.getFilhos().size() - 1; i >= 0; i--) {
                         if (!solucaoEncontrada) {
-                           pilha.insere(noInicial.getFilhos().get(i));
-                            
+                            pilha.insere(noInicial.getFilhos().get(i));
+
                         } else {
                             break;
                         }
@@ -408,7 +422,7 @@ public class Controle implements modelo.FuncoesControle {
                     for (int i = 0; i < noInicial.getFilhos().size(); i++) {
                         if (!solucaoEncontrada) {
                             buscaEmProfundidade(noInicial.getFilhos().get(i));
-                            
+
                         } else {
                             break;
                         }
