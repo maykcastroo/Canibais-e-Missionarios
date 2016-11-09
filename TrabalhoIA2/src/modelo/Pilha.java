@@ -11,8 +11,8 @@ public class Pilha {
 
     private ArrayList<No> pilha = new ArrayList<No>();
 
-    public void insere(No objeto) {
-        this.pilha.add(objeto);
+    public void insere(No novo) {
+        this.pilha.add(novo);
     }
 
     public No remove() {

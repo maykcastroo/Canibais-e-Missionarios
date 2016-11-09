@@ -8,7 +8,7 @@ import modelo.No;
 
 public class Teste {
 	public static void main(String args []){
-		int quant = 8;
+		int quant = 3;
 		int capacidadeCanoa = 2;
 		
 		Controle c = new Controle(capacidadeCanoa);
@@ -16,17 +16,17 @@ public class Teste {
 		No noInicial = new No(null, e);
 	
 		System.out.println("Legenda: lado onde a canoa se encontra, missionarioas na esquerda, missionarios na direita, canibais na esquerda, canibais na direita");
-		System.out.println("true = canoa está na margem direita\n"
-				+ "false = canoa está na margem esquerda\n");
+		System.out.println("true = canoa estï¿½ na margem direita\n"
+				+ "false = canoa estï¿½ na margem esquerda\n");
 		System.out.println("No Inicial: "+e.getMargemCanoa()+", "+quant+", 0, "+quant+", 0");
 		Scanner input = new Scanner(System.in);
-		//String pausa = input.next();
-		//c.buscaEmProfundidade(noInicial);
-		c.buscaEmLargura(noInicial);
-		//c.buscaGulosa(noInicial);
-		//c.buscaA(noInicial);
-		System.out.println("Número máximo de nós na fronteira de estados: "+c.quantidadeNosFronteiraDeEstados(noInicial));
+//		String pausa = input.next();
+		c.buscaEmProfundidade(noInicial);
+//		c.buscaEmLargura(noInicial);
+//		c.buscaGulosa(noInicial);
+//		c.buscaA(noInicial);
+		System.out.println("Nï¿½mero mï¿½ximo de nï¿½s na fronteira de estados: "+c.quantidadeNosFronteiraDeEstados(noInicial));
 		
-		/* CONFIRMAÇÃO COMMIT */
+		/* CONFIRMAï¿½ï¿½O COMMIT */
 	}
 }
